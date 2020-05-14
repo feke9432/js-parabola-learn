@@ -1,18 +1,18 @@
 const path = require('path');
 const HtmlWebpackPlugin  = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+console.log('build------------')
+
 module.exports = {
-  mode: 'development',
   entry: {
     app: './src/main.js',
-    print: './src/print.js'
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: '[name].[chunkhash].js',
     // path 模块负责 检查并生成 目录
     path: path.resolve(__dirname, 'dist')
   },
-  devtool: 'inline-source-map',
   devServer: {
     contentBase: './dist'
   },

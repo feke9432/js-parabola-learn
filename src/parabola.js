@@ -1,7 +1,9 @@
 export default class Parabolic {
-  Curvature = 0.001
-  defaultWidth = '100px'
-  defaultHeight = 'auto'
+  constructor() {
+    this.Curvature = 0.001
+    this.defaultWidth = '100px'
+    this.defaultHeight = 'auto'
+  }
   
   itemFly (startel, endElClass) {
     if (!startel || !endElClass) return 
@@ -58,7 +60,6 @@ export default class Parabolic {
 
     for(let i = 0; i < jingdu; i++) {
       let x = i * ml
-      console.log(x)
       let y = this.getY_By_x(x, a, b, c)
 
       let point = this.getPoint({x, y})
