@@ -1,34 +1,25 @@
 const path = require('path');
-
+const HtmlWebpackPlugin  = require('html-webpack-plugin')
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   mode: 'development',
-  entry: './src/main.js',
+  entry: {
+    app: './src/main.js',
+    print: './src/print.js'
+  },
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     // path 模块负责 检查并生成 目录
     path: path.resolve(__dirname, 'dist')
   },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
-      },
-      {
-        test: /\.(png|syv|jpg|git)$/,
-        use: [
-          'file-loader'
-        ]
-      },
-      {
-        test: /\.(woff|woff2|eot|ttf|otf)/,
-        use: [
-          'file-loader'
-        ]
-      }
-    ]
-  }
+  devtool: 'inline-source-map',
+  devServer: {
+    contentBase: './dist'
+  },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+    })
+  ]
 };
